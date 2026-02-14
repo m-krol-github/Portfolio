@@ -1,0 +1,149 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import MatrixRain from './MatrixRain';
+import backImg from './assets/futuristic-moon-background.jpg';
+import gameImg from './assets/thumbnails/winter-tire.png';
+import cesiumImg from './assets/thumbnails/map-thumbnail.jpg';
+import stripImg from './assets/lenovo.jpg';
+
+const Home = () => {
+  // Wspólny styl dla dużych napisów
+  const fontStyle = {
+    fontFamily: "'Bebas Neue', sans-serif",
+    color: 'white',
+    textTransform: 'uppercase',
+    margin: 0,
+    fontStyle: 'italic',
+    lineHeight: '0.9'
+  };
+
+  return (
+    <div style={{
+      width: '100vw', height: '100vh', backgroundColor: '#000',
+      display: 'flex', flexDirection: 'column', overflow: 'hidden', position: 'relative'
+    }}>
+
+      {/* --- 1. GÓRNA BELKA (HEADER) --- */}
+      <header style={{
+        height: '60px', backgroundColor: '#000', display: 'flex',
+        alignItems: 'center', justifyContent: 'space-between', padding: '0 20px',
+        borderBottom: '1px solid #333', zIndex: 20
+      }}>
+        {/* Lewa strona: Szary kwadrat + Link */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          <div style={{ width: '40px', height: '40px', backgroundColor: '#444' }}></div>
+          <a href="https://linkedin.com" style={{ ...fontStyle, fontSize: '1.2rem', color: '#888', textDecoration: 'none' }}>
+            LINKEDIN PROFILE
+          </a>
+        </div>
+        {/* Prawa strona: Nazwa pliku */}
+        <div style={{ ...fontStyle, fontSize: '1.2rem', color: '#555' }}>
+          HOME.JSX
+        </div>
+      </header>
+
+      {/* --- 2. ŚRODKOWA CZĘŚĆ (MAIN CONTENT) --- */}
+      <main style={{ flex: 1, display: 'flex', position: 'relative', overflow: 'hidden' }}>
+
+        {/* LEWY ELEMENT (GAME GRA) */}
+        <div style={{
+          flex: 1, position: 'relative', overflow: 'hidden', borderRight: '1px solid #ffffff'
+        }}>
+          {/* Tło z gry */}
+          <div style={{
+            position: 'absolute', width: '100%', height: '100%',
+            backgroundImage: `url(${backImg})`, backgroundSize: 'cover', backgroundPosition: 'center',
+            background: 'black',
+            filter: 'brightness(0.6)'
+          }} />
+
+          {/* LEWA BELKA (Od lewej góry do prawego dołu) */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: '-50px',
+            width: '200px',
+            height: '180%',
+            backgroundImage: `url(${stripImg})`,
+            /* KLUCZOWE ZMIANY PONIŻEJ */
+            backgroundSize: '1512px 2512px', // Wymuszamy oryginalny rozmiar tekstury
+            backgroundRepeat: 'space',
+            backgroundPosition: '0px 0px',   // Stały punkt startowy "wycinka"
+            /* ----------------------- */
+            transform: 'rotate(-35deg)',
+            transformOrigin: 'top left',
+            zIndex: 5,
+            borderRight: '2px solid rgba(255,255,255,0.3)',
+            boxShadow: '0 0 40px rgba(0,0,0,0.8)'
+          }} />
+
+          {/* Tekst */}
+          <div style={{ position: 'relative', zIndex: 10, padding: '10%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <h1 style={{ ...fontStyle, fontSize: '5rem' }}>GAME<br />GRA</h1>
+          </div>
+        </div>
+
+        {/* PRAWY ELEMENT (CESIUM MAPA) */}
+        <div style={{
+          flex: 1, position: 'relative', overflow: 'hidden'
+        }}>
+          {/* Tło z Cesium */}
+          <div style={{
+            position: 'absolute', width: '100%', height: '100%',            
+            backgroundImage: `url(${backImg})`, backgroundSize: 'cover', backgroundPosition: 'center',
+            background: 'black',
+            filter: 'brightness(0.6)'
+          }} />
+
+          {/* PRAWA BELKA (Od prawej góry do lewego dołu) */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            right: '-50px',
+            width: '200px',
+            height: '180%',
+            backgroundImage: `url(${stripImg})`,
+            backgroundSize: 'cover',
+            transform: 'rotate(35deg)', // Rotacja w prawo
+            transformOrigin: 'top right', // Zakotwiczenie w prawym górnym rogu
+            zIndex: 5,
+            borderLeft: '2px solid rgba(255,255,255,0.3)',
+            boxShadow: '0 0 40px rgba(0,0,0,0.8)'
+          }} />
+
+          {/* Tekst */}
+          <div style={{ position: 'relative', zIndex: 10, padding: '10%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end', textAlign: 'right' }}>
+            <h1 style={{ ...fontStyle, fontSize: '5rem' }}>CESIUM<br />MAPA</h1>
+          </div>
+        </div>
+
+      </main>
+
+      {/* --- 3. DOLNA BELKA (FOOTER) --- */}
+      <footer style={{
+        height: '100px', position: 'relative', backgroundColor: '#000',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        borderTop: '1px solid #333', zIndex: 20, overflow: 'hidden'
+      }}>
+        {/* Tło Matrixa */}
+        <div style={{ position: 'absolute', width: '100%', height: '100%', opacity: 0.4 }}>
+          <MatrixRain />
+        </div>
+
+        {/* Linki Kontaktowe */}
+        <div style={{ position: 'relative', display: 'flex', gap: '50px' }}>
+          <a href="#projects" style={{ ...fontStyle, fontSize: '2.5rem', textDecoration: 'none', letterSpacing: '5px' }}>
+            PROJECTS
+          </a>
+          <span style={{ ...fontStyle, fontSize: '2.5rem', opacity: 0.3 }}>/</span>
+          <a href="#contact" style={{ ...fontStyle, fontSize: '2.5rem', textDecoration: 'none', letterSpacing: '5px' }}>
+            KONTAKT
+          </a>
+        </div>
+      </footer>
+
+    </div>
+  );
+};
+
+export default Home;
