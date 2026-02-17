@@ -1,0 +1,37 @@
+[
+  {
+    "id": "L01",
+    "name": "Lancut",
+    "lat": 50.0678,
+    "lng": 22.2244,
+    "comment": "..."
+  },
+  {
+    "id": "L02",
+    "name": "Rzeszow",
+    "lat": 50.0412,
+    "lng": 21.9991,
+    "comment": "..."
+  },
+  {
+    "id": "L03",
+    "name": "Dire Dawa",
+    "lat": 9.5933,
+    "lng": 41.8661,
+    "comment": "..."
+  },
+  {
+    "id": "L04",
+    "name": "Doha",
+    "lat": 25.2854,
+    "lng": 51.5310,
+    "comment": "..."
+  },
+  {
+    "id": "L05",
+    "name": "Dubai",
+    "lat": 25.2048,
+    "lng": 55.2708,
+    "comment": "..."
+  }
+]

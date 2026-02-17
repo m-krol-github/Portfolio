@@ -55,3 +55,11 @@ html, body, #root {
   border: 1px solid rgba(255, 255, 255, 0.6);
   transition: all 0.3s ease;
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  border-radius: 10px;
+}

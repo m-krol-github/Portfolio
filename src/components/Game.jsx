@@ -16,7 +16,7 @@ const Game = () => {
       <KeyboardControls map={[{ name: "grip", keys: ["Space"] }]}>
         <Canvas
           shadows
-          dpr={[1, 2]} // To zostawiamy dla żylety!
+          dpr={[1, 2]} 
           gl={{ antialias: true }}
         >
           <Suspense fallback={null}>

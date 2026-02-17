@@ -1,0 +1,37 @@
+[
+  {
+    "id": "L01",
+    "name": "Łańcut",
+    "lat": 50.0678,
+    "lng": 22.2244,
+    "comment": "Rodzinne strony i piękny zamek."
+  },
+  {
+    "id": "L02",
+    "name": "Rzeszów",
+    "lat": 50.0412,
+    "lng": 21.9991,
+    "comment": "Tu bije serce moich projektów."
+  },
+  {
+    "id": "L03",
+    "name": "Dire Dawa",
+    "lat": 9.5933,
+    "lng": 41.8661,
+    "comment": "Niesamowity klimat Etiopii."
+  },
+  {
+    "id": "L04",
+    "name": "Doha",
+    "lat": 25.2854,
+    "lng": 51.5310,
+    "comment": "Pustynna nowoczesność."
+  },
+  {
+    "id": "L05",
+    "name": "Dubaj",
+    "lat": 25.2048,
+    "lng": 55.2708,
+    "comment": "Architektura przyszłości."
+  }
+]

@@ -1,0 +1,14 @@
+[
+  { "id": 1, "name": "Łańcut", "lat": 50.0678, "lng": 22.2244, "description": "Place of live" },
+  { "id": 2, "name": "Rzeszów", "lat": 50.0412, "lng": 21.9991, "description": "Nearest Airport :)" },
+  { "id": 3, "name": "Dire Dawa", "lat": 9.5933, "lng": 41.8661, "description": "Etiopia- Projct DMT" },
+  { "id": 4, "name": "Doha", "lat": 25.2854, "lng": 51.5310, "description": "Often stay place" },
+  { "id": 5, "name": "Dubaj", "lat": 25.2048, "lng": 55.2708, "description": "Most often used Airport" },
+  { "id": 6, "name": "Londyn", "lat": 51.5074, "lng": -0.1278, "description": "Headquater of Thryve" },
+  { "id": 7, "name": "Paryż", "lat": 48.8566, "lng": 2.3522, "description": "Capitol city of France - nice for work and stay" },
+  { "id": 8, "name": "Lyon", "lat": 45.7640, "lng": 4.8357, "description": "Second most beautiful city in France in my opinion" },
+  { "id": 9, "name": "Mediolan", "lat": 45.4642, "lng": 9.1900, "description": "Most often visited City in Italy" },
+  { "id": 10, "name": "Frankfurt nad Menem", "lat": 50.1109, "lng": 8.6821, "description": "Most often visited City in Germany" },
+  { "id": 11, "name": "Berlin", "lat": 52.5200, "lng": 13.4050, "description": "Headquater of DMT" }, 
+  { "id": 12, "name": "Dallas", "lat": 32.7705, "lng": -96.7982, "description": "Headquater of GGS" } 
+]
