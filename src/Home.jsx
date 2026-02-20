@@ -2,35 +2,41 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import MatrixRain from './MatrixRain';
-import backImg from './assets/futuristic-moon-background.jpg';
 import backImg2 from './assets/corusant.jpg';
 import world4K from './assets/world4K.png';
 import mount4K from './assets/mount4K.png';
-import li from './assets/li.png';
 
 const Home = () => {
   const navigate = useNavigate();
   const [isExiting, setIsExiting] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); 
-  
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2500);
-    return () => clearTimeout(timer);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timer);
+    };
   }, []);
 
   const handleNavigation = (path) => {
-  setIsExiting(true);
-  setTimeout(() => {
-    if (path === 'contact') {
-      navigate('/contact'); 
-    }
-  }, 1200);
-};
+    setIsExiting(true);
+    setTimeout(() => {
+      if (path === 'contact') {
+        navigate('/contact');
+      }
+    }, 1200);
+  };
 
   const fontStyle = {
-    fontFamily: "'Bebas Neue', sans-serif",
+    fontFamily: "'x-font', sans-serif",
     color: 'white',
     textTransform: 'uppercase',
     margin: 0,
@@ -39,15 +45,14 @@ const Home = () => {
   };
 
   return (
-    <div style={{ width: '100vw', height: '100vh', backgroundColor: '#000', overflow: 'hidden', position: 'relative' }}>
-      
-      {/* --- Splash Screen --- */}
+    <div style={{ width: '100vw', height: '100vh', backgroundColor: '#000', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+      { /*------SPLASH------*/ }
       <AnimatePresence>
         {isLoading && (
           <motion.div
             key="preloader"
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 1.1, filter: 'blur(20px)' }} // Efektowne wyjście
+            exit={{ opacity: 0, scale: 1.1, filter: 'blur(20px)' }}
             transition={{ duration: 1, ease: "easeInOut" }}
             style={{
               position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
@@ -59,13 +64,13 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              style={{ textAlign: 'center' }}
+              style={{ textAlign: 'center', padding: '0 20px' }}
             >
-              <h2 style={{ ...fontStyle, fontSize: '4rem', letterSpacing: '10px', color: '#00ff00' }}>
+              <h2 style={{ ...fontStyle, fontSize: isMobile ? '2.5rem' : '4rem', letterSpacing: '10px', color: '#00ff00' }}>
                 MACIEK // PORTFOLIO
               </h2>
               <div style={{ width: '100%', height: '1px', backgroundColor: '#333', marginTop: '10px', position: 'relative' }}>
-                <motion.div 
+                <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: '100%' }}
                   transition={{ duration: 2, ease: "linear" }}
@@ -80,7 +85,7 @@ const Home = () => {
         )}
       </AnimatePresence>
 
-      {/* --- curtain --- */}
+      {/* --- CONTACT COURTAIN --- */}
       <AnimatePresence>
         {isExiting && (
           <motion.div
@@ -93,12 +98,12 @@ const Home = () => {
               alignItems: 'center', justifyContent: 'center', color: 'black'
             }}
           >
-            <h2 style={{ ...fontStyle, fontSize: '5rem', color: 'black' }}>INITIALIZING...</h2>
+            <h2 style={{ ...fontStyle, fontSize: isMobile ? '3rem' : '5rem', color: 'black' }}>INITIALIZING...</h2>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* --- main content --- */}
+      {/* --- MAIN --- */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}
@@ -106,71 +111,82 @@ const Home = () => {
         style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         {/* HEADER */}
-        <header style={{ height: '60px', backgroundColor: '#000', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', borderBottom: '1px solid #333', zIndex: 20 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-            <div style={{ width: '40px', height: '40px', backgroundColor: '#444' }}></div>
-            <a href="#" style={{ ...fontStyle, fontSize: '1.2rem', color: '#888', textDecoration: 'none' }}>LINKEDIN PROFILE</a>
-          </div>
-          <div style={{ ...fontStyle, fontSize: '1.2rem', color: '#555' }}>HOME.JSX</div>
+        <header style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', borderBottom: '1px solid #333', zIndex: 50, backgroundColor: '#000' }}>
+          
+          <div style={{ ...fontStyle, fontSize: '1.2rem', color: '#ffffff' }}>HOME.JSX</div>
         </header>
 
-        {/* MAIN With BARs */}
-        <main style={{ flex: 1, position: 'relative', overflow: 'hidden', backgroundImage: `url(${backImg2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-          <div style={{ position: 'absolute', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 1 }} />
+        {/* MAIN CONTENT */}
+        <main style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: isMobile ? 'column' : 'row', overflow: 'hidden' }}>
           
-          {/* BAR L */}
-          <Link to="/game" style={{ position: 'absolute', left: 0, width: '50%', height: '100%', zIndex: 10 }}>
-            <div style={{
-              position: 'absolute', top: 0, left: '-50px', width: '200px', height: '180%',
-              transform: 'rotate(-35deg)', transformOrigin: 'top left', zIndex: 5,
-              overflow: 'hidden', borderRight: '2px solid rgba(255,255,255,0.3)'
-            }}>
-              <div style={{
-                position: 'absolute', width: '2548px', height: '4048px', top: '-50%', left: '-1500px',
-                backgroundImage: `url(${mount4K})`, backgroundSize: '2048px 2048px',
-                transform: 'rotate(35deg) scale(0.75) translate(150px, 250px)',
-                transformOrigin: 'center center'
-              }} />
-            </div>
-            <div style={{ padding: '10% 20%', height: '100%', display: 'flex', alignItems: 'center' }}>
-              <h1 style={{ ...fontStyle, fontSize: '5rem', position: 'relative', zIndex: 11 }}>GAME<br />GRA</h1>
-            </div>
+          {/* TŁO GŁÓWNE ŚRODKOWE */}
+          <div style={{ 
+            position: 'absolute', inset: 0, 
+            backgroundImage: `url(${backImg2})`, 
+            backgroundSize: 'cover', backgroundPosition: 'center',
+            zIndex: 1 
+          }}>
+            <div style={{ width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.6)' }} />
+          </div>
+
+          {/* LGAME */}
+          <Link to="/game" style={{ 
+            position: 'relative', flex: isMobile ? '1' : '0 0 25%', zIndex: 10, textDecoration: 'none', overflow: 'hidden',
+            borderRight: !isMobile ? '2px solid #00ff00' : 'none',
+            borderBottom: isMobile ? '2px solid #00ff00' : 'none'
+          }}>
+            <motion.div 
+              whileHover={{ scale: 1.02 }}
+              style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}
+            >
+              <div style={{ 
+                position: 'absolute', inset: 0,
+                backgroundImage: `url(${mount4K})`, backgroundSize: 'cover', backgroundPosition: 'center',
+                transform: isMobile ? 'none' : 'skewX(-5deg) translateX(-10%)',
+                filter: 'grayscale(1) brightness(0.4)', transition: '0.3s'
+              }} className="panel-bg" />
+              <h1 style={{ ...fontStyle, fontSize: isMobile ? '3rem' : '4rem', zIndex: 11, textAlign: 'center', textShadow: '0 0 15px rgba(0,255,0,0.5)' }}>GAME<br/>GRA</h1>
+            </motion.div>
           </Link>
 
-          {/* BAR R */}
-          <Link to="/map" style={{ position: 'absolute', right: 0, width: '50%', height: '100%', zIndex: 10, textDecoration: 'none' }}>
-            <div style={{
-              position: 'absolute', top: 0, right: '-50px', width: '200px', height: '180%',
-              transform: 'rotate(35deg)', transformOrigin: 'top right', zIndex: 5,
-              overflow: 'hidden', borderLeft: '2px solid rgba(255,255,255,0.3)'
-            }}>
-              <div style={{
-                position: 'absolute', width: '2048px', height: '4048px',
-                backgroundImage: `url(${world4K})`, backgroundSize: '2048px 2048px',
-                transform: 'rotate(-35deg) scale(0.74) translate(60px, -1100px)',
-                transformOrigin: 'center center'
-              }} />
-            </div>
-            <div style={{ padding: '10% 20%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', textAlign: 'right' }}>
-              <h1 style={{ ...fontStyle, fontSize: '5rem', position: 'relative', zIndex: 11 }}>CESIUM<br />MAPA</h1>
-            </div>
+          {!isMobile && <div style={{ flex: 1, zIndex: 2 }} />}
+
+          {/* RMAP */}
+          <Link to="/map" style={{ 
+            position: 'relative', flex: isMobile ? '1' : '0 0 25%', zIndex: 10, textDecoration: 'none', overflow: 'hidden',
+            borderLeft: !isMobile ? '2px solid #00ff00' : 'none'
+          }}>
+            <motion.div 
+              whileHover={{ scale: 1.02 }}
+              style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}
+            >
+              <div style={{ 
+                position: 'absolute', inset: 0,
+                backgroundImage: `url(${world4K})`, backgroundSize: 'cover', backgroundPosition: 'center',
+                transform: isMobile ? 'none' : 'skewX(5deg) translateX(10%)',
+                filter: 'grayscale(1) brightness(0.4)', transition: '0.3s'
+              }} className="panel-bg" />
+              <h1 style={{ ...fontStyle, fontSize: isMobile ? '3rem' : '4rem', zIndex: 11, textAlign: 'center', textShadow: '0 0 15px rgba(0,255,0,0.5)' }}>CESIUM<br/>MAPA</h1>
+            </motion.div>
           </Link>
         </main>
 
         {/* FOOTER */}
-        <footer style={{ height: '100px', position: 'relative', backgroundColor: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center', borderTop: '1px solid #ff0000', zIndex: 20, overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', width: '100%', height: '100%', opacity: 0.4 }}>
-            <MatrixRain />
-          </div>
-          <div style={{ position: 'relative', display: 'flex', gap: '10px' }}>
-            {/* <button onClick={() => handleNavigation('projects')} style={{ background: 'none', border: 'none', cursor: 'pointer', ...fontStyle, fontSize: '2.5rem', letterSpacing: '5px' }}>PROJECTS</button> */}
-            {/* <span style={{ ...fontStyle, fontSize: '5rem', opacity: 0.5 }}>/</span> */}
-            <button onClick={() => handleNavigation('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', ...fontStyle, fontSize: '2.5rem', letterSpacing: '10px' }}>KONTAKT</button>
+        <footer style={{ height: isMobile ? '80px' : '100px', position: 'relative', borderTop: '1px solid #ff0000', zIndex: 50, backgroundColor: '#000' }}>
+          <div style={{ position: 'absolute', inset: 0, opacity: 0.3 }}><MatrixRain /></div>
+          <div style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <button onClick={() => handleNavigation('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', ...fontStyle, fontSize: isMobile ? '2rem' : '2.5rem', letterSpacing: isMobile ? '5px' : '10px' }}>KONTAKT</button>
           </div>
         </footer>
       </motion.div>
+
+      <style>{`
+        a:hover .panel-bg {
+          filter: grayscale(0) brightness(0.7) !important;
+          transform: scale(1.1) ${isMobile ? '' : 'skewX(0deg)'} !important;
+        }
+      `}</style>
     </div>
-    
   );
 };
 

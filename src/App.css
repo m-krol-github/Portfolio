@@ -63,3 +63,28 @@ html, body, #root {
   background: #00ff00;
   border-radius: 10px;
 }
+
+@font-face {
+  font-family: 'Neogrotesk';
+  src: url(./assets/fonts/NeogroteskPro-Bold.otf)
+}
+
+@font-face {
+  font-family: 'NFS';
+  src: url(./assets/fonts/nfs.ttf)
+}
+
+@font-face {
+  font-family: 'cyber';
+  src: url(./assets/fonts/BITSUMIS.TTF)
+}
+
+@font-face {
+  font-family: 'Arial';
+  src: url(./assets/fonts/ARIALMTBLACK.TTF)
+}
+
+@font-face {
+  font-family: 'x-font';
+  src: url(./assets/fonts/X-SCALE_.TTF)
+}
