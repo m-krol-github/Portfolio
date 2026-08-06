@@ -16,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/game" element={<GameScene />} />
-            <Route path="/map" element={<GeoScene />} />
+            { <Route path="/map" element={<GeoScene />} /> }
             <Route path="/contact" element={<Contcact />} />
           </Routes>
         </AnimatePresence>

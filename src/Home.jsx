@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener('resize', handleResize);
-    
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2500);
@@ -44,9 +44,20 @@ const Home = () => {
     lineHeight: '0.9'
   };
 
+  <div style={{
+    width: '100vw',
+    minHeight: '100dvh',   // 🔥 dynamic viewport height
+    overflowY: 'auto',     // 🔥 scroll palcem
+    overflowX: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
+    position: 'relative',
+    backgroundColor: '#000'
+  }}></div>
+
   return (
     <div style={{ width: '100vw', height: '100vh', backgroundColor: '#000', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-      { /*------SPLASH------*/ }
+      { /*------SPLASH------*/}
       <AnimatePresence>
         {isLoading && (
           <motion.div
@@ -112,61 +123,61 @@ const Home = () => {
       >
         {/* HEADER */}
         <header style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', borderBottom: '1px solid #333', zIndex: 50, backgroundColor: '#000' }}>
-          
+
           <div style={{ ...fontStyle, fontSize: '1.2rem', color: '#ffffff' }}>HOME.JSX</div>
         </header>
 
         {/* MAIN CONTENT */}
         <main style={{ flex: 1, position: 'relative', display: 'flex', flexDirection: isMobile ? 'column' : 'row', overflow: 'hidden' }}>
-          
+
           {/* TŁO GŁÓWNE ŚRODKOWE */}
-          <div style={{ 
-            position: 'absolute', inset: 0, 
-            backgroundImage: `url(${backImg2})`, 
+          <div style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none',
+            backgroundImage: `url(${backImg2})`,
             backgroundSize: 'cover', backgroundPosition: 'center',
-            zIndex: 1 
+            zIndex: 1
           }}>
             <div style={{ width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.6)' }} />
           </div>
 
           {/* LGAME */}
-          <Link to="/game" style={{ 
+          <Link to="/game" style={{
             position: 'relative', flex: isMobile ? '1' : '0 0 25%', zIndex: 10, textDecoration: 'none', overflow: 'hidden',
             borderRight: !isMobile ? '2px solid #00ff00' : 'none',
             borderBottom: isMobile ? '2px solid #00ff00' : 'none'
           }}>
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.02 }}
               style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}
             >
-              <div style={{ 
+              <div style={{
                 position: 'absolute', inset: 0,
                 backgroundImage: `url(${mount4K})`, backgroundSize: 'cover', backgroundPosition: 'center',
                 transform: isMobile ? 'none' : 'skewX(-5deg) translateX(-10%)',
                 filter: 'grayscale(1) brightness(0.4)', transition: '0.3s'
               }} className="panel-bg" />
-              <h1 style={{ ...fontStyle, fontSize: isMobile ? '3rem' : '4rem', zIndex: 11, textAlign: 'center', textShadow: '0 0 15px rgba(0,255,0,0.5)' }}>GAME<br/>GRA</h1>
+              <h1 style={{ ...fontStyle, fontSize: isMobile ? '3rem' : '4rem', zIndex: 11, textAlign: 'center', textShadow: '0 0 15px rgba(0,255,0,0.5)' }}>GAME<br />GRA</h1>
             </motion.div>
           </Link>
 
           {!isMobile && <div style={{ flex: 1, zIndex: 2 }} />}
 
           {/* RMAP */}
-          <Link to="/map" style={{ 
+          <Link to="/map" style={{
             position: 'relative', flex: isMobile ? '1' : '0 0 25%', zIndex: 10, textDecoration: 'none', overflow: 'hidden',
             borderLeft: !isMobile ? '2px solid #00ff00' : 'none'
           }}>
-            <motion.div 
+            <motion.div
               whileHover={{ scale: 1.02 }}
               style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}
             >
-              <div style={{ 
+              <div style={{
                 position: 'absolute', inset: 0,
                 backgroundImage: `url(${world4K})`, backgroundSize: 'cover', backgroundPosition: 'center',
                 transform: isMobile ? 'none' : 'skewX(5deg) translateX(10%)',
                 filter: 'grayscale(1) brightness(0.4)', transition: '0.3s'
               }} className="panel-bg" />
-              <h1 style={{ ...fontStyle, fontSize: isMobile ? '3rem' : '4rem', zIndex: 11, textAlign: 'center', textShadow: '0 0 15px rgba(0,255,0,0.5)' }}>CESIUM<br/>MAPA</h1>
+              <h1 style={{ ...fontStyle, fontSize: isMobile ? '3rem' : '4rem', zIndex: 11, textAlign: 'center', textShadow: '0 0 15px rgba(0,255,0,0.5)' }}>CESIUM<br />MAPA</h1>
             </motion.div>
           </Link>
         </main>
