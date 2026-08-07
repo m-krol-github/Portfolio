@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 import liIcon from './assets/logos/li9.png';
-import ghIcon from './assets/logos/git2.png'; 
+import ghIcon from './assets/logos/git2.png';
 import drIcon from './assets/logos/drive.png';
-import background from './assets/backgrounds/backgr.jpg'; 
+import background from './assets/backgrounds/backgr.jpg';
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -25,11 +25,11 @@ const Contact = () => {
       target="_blank"
       rel="noopener noreferrer"
       whileHover={{ x: 10 }}
-      style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
+      style={{
+        display: 'flex',
+        alignItems: 'center',
         gap: isMobile ? '10px' : '20px',
-        textDecoration: 'none', 
+        textDecoration: 'none',
         marginBottom: '15px',
         width: 'fit-content'
       }}
@@ -47,18 +47,18 @@ const Contact = () => {
           overflow: 'hidden'
         }}
       >
-        <img 
-          src={icon} 
-          alt={label} 
-          style={{ width: '80%', height: '80%', objectFit: 'contain' }} 
+        <img
+          src={icon}
+          alt={label}
+          style={{ width: '80%', height: '80%', objectFit: 'contain' }}
         />
       </motion.div>
-      
+
       <motion.span
         whileHover={{ color: '#00ff00' }}
         transition={{ duration: 0.3 }}
-        style={{ 
-          ...fontStyle, 
+        style={{
+          ...fontStyle,
           fontSize: isMobile ? '1.4rem' : '2rem'
         }}
       >
@@ -66,6 +66,23 @@ const Contact = () => {
       </motion.span>
     </motion.a>
   );
+
+  const EmailLink = ({ href, label }) => (
+    <motion.a
+      whileHover={{ color: '#00ff00', x: 5 }}
+      href={href}
+      style={{
+        ...fontStyle,
+        fontSize: isMobile ? '2rem' : '3rem',
+        textDecoration: 'none',
+        display: 'block',
+        marginBottom: '20px'
+      }}
+    >
+      {label}
+    </motion.a>
+  );
+
 
   return (
     <motion.div
@@ -96,87 +113,73 @@ const Contact = () => {
 
       {/* DARK OVERLAY */}
       <div
-  style={{
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    background: 'rgba(0,0,0,0.55)',
-    zIndex: 1,
-    pointerEvents: 'none'
-  }}
-/>
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          background: 'rgba(0, 0, 0, 0.875)',
+          zIndex: 1,
+          pointerEvents: 'none'
+        }}
+      />
 
       {/* CONTENT */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.4, duration: 1 }}
-        style={{ 
-          textAlign: 'left', 
-          zIndex: 10, 
-          width: '80%', 
+        style={{
+          textAlign: 'left',
+          zIndex: 10,
+          width: '80%',
           maxWidth: '800px'
         }}
       >
-        <h1 
-          style={{ 
-            ...fontStyle, 
-            fontSize: isMobile ? '2.5rem' : '4rem', 
-            marginBottom: '50px', 
-            borderBottom: '2px solid #333' 
+        <h1
+          style={{
+            ...fontStyle,
+            fontSize: isMobile ? '2.5rem' : '4rem',
+            marginBottom: '50px',
+            borderBottom: '2px solid #333'
           }}
         >
-          CONTACT 
+          CONTACT
         </h1>
-        
+
         <div style={{ marginBottom: '40px' }}>
           <p style={{ ...fontStyle, color: '#00ff00', fontSize: isMobile ? '1.5rem' : '2rem', marginBottom: '10px' }}>
-            @ EMAIL:
+            @MAIL:
           </p>
 
-          <motion.a 
-            whileHover={{ color: '#00ff00', x: 5 }}
-            href="mailto:office@nicetry.com.pl" 
-            style={{ 
-              ...fontStyle, 
-              fontSize: isMobile ? '2rem' : '3rem', 
-              textDecoration: 'none', 
-              display: 'block', 
-              marginBottom: '20px' 
-            }}
-          >
-            OFFICE@NICETRY.COM.PL
-          </motion.a>
+          <EmailLink
+            href="mailto:admin@nicetry.com.pl"
+            label="admin@NICETRY.COM.PL"
+          />
+          
+          {/*
 
-          <motion.a 
-            whileHover={{ color: '#00ff00', x: 5 }}
-            href="mailto:maciek@gmail.com" 
-            style={{ 
-              ...fontStyle, 
-              fontSize: isMobile ? '2rem' : '3rem', 
-              textDecoration: 'none', 
-              display: 'block', 
-              marginBottom: '20px' 
-            }}
-          >
-            MACIEK@GMAIL.COM
-          </motion.a>
+          <EmailLink
+            href="mailto:macwoq@gmail.com"
+            label="macwoq@gmail.com"
+          />
+          
+          */}
 
-          <p style={{ 
-  ...fontStyle, 
-  color: '#00ff00', 
-  fontSize: isMobile ? '1.5rem' : '2rem', 
-  marginBottom: '10px' 
-}}>
-  MOBILE:
-</p>
+          <p style={{
+            ...fontStyle,
+            color: '#00ff00',
+            fontSize: isMobile ? '1.5rem' : '2rem',
+            marginBottom: '10px'
+          }}>
+            MOBILE:
+          </p>
 
-          <p style={{ 
-            ...fontStyle, 
-            fontSize: isMobile ? '1.8rem' : '2.5rem', 
-            marginBottom: '40px' 
+          <p style={{
+            ...fontStyle,
+            fontSize: isMobile ? '1.8rem' : '2.5rem',
+            marginBottom: '40px'
           }}>
             +48 880 208 416
           </p>
@@ -184,38 +187,38 @@ const Contact = () => {
           <p style={{ ...fontStyle, color: '#00ff00', fontSize: isMobile ? '1.5rem' : '2rem' }}>
             SOCIAL & ASSETS:
           </p>
-          
-          <SocialLink 
-            icon={liIcon} 
-            label="LINKEDIN PROFILE" 
-            href="https://www.linkedin.com/in/maciejkrol-developer" 
+
+          <SocialLink
+            icon={liIcon}
+            label="LINKEDIN PROFILE"
+            href="https://www.linkedin.com/in/maciejkrol-developer"
           />
-          <SocialLink 
-            icon={ghIcon} 
-            label="GITHUB REPOSITORY" 
-            href="https://github.com/m-krol-github" 
+          <SocialLink
+            icon={ghIcon}
+            label="GITHUB REPOSITORY"
+            href="https://github.com/m-krol-github"
           />
-          <SocialLink 
-            icon={drIcon} 
-            label="GOOGLE DRIVE / PORTFOLIO" 
-            href="https://drive.google.com/drive/folders/17aygvSt26eTNxYQ5y7_xZGtFa7lwZwh0?usp=drive_link" 
+          <SocialLink
+            icon={drIcon}
+            label="GOOGLE DRIVE / PORTFOLIO"
+            href="https://drive.google.com/drive/folders/17aygvSt26eTNxYQ5y7_xZGtFa7lwZwh0?usp=drive_link"
           />
         </div>
 
         <motion.button
-  whileHover={{ color: '#00ff00', x: -5 }}
-  onClick={() => navigate('/')}
-  style={{
-    background: 'none',
-    border: '0px solid #00ff00',
-    cursor: 'pointer',
-    ...fontStyle,
-    color: '#c4ff04',
-    fontSize: isMobile ? '1.8rem' : '2rem',
-  }}
->
-  [ CLICK ] RETURN TO HOME PAGE
-</motion.button>
+          whileHover={{ color: '#00ff00', x: -5 }}
+          onClick={() => navigate('/')}
+          style={{
+            background: 'none',
+            border: '0px solid #00ff00',
+            cursor: 'pointer',
+            ...fontStyle,
+            color: '#c4ff04',
+            fontSize: isMobile ? '1.8rem' : '2rem',
+          }}
+        >
+          [ CLICK ] RETURN TO HOME PAGE
+        </motion.button>
 
       </motion.div>
     </motion.div>
