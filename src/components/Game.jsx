@@ -18,6 +18,14 @@ const Game = () => {
           shadows
           dpr={[1, 2]} 
           gl={{ antialias: true }}
+          style={{
+            width: '100vw',
+            height: '100vh',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            pointerEvents: 'none',
+          }}
         >
           <Suspense fallback={null}>
             <Experience />
