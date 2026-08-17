@@ -122,9 +122,40 @@ const Home = () => {
         style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column' }}
       >
         {/* HEADER */}
-        <header style={{ height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', borderBottom: '1px solid #333', zIndex: 50, backgroundColor: '#000' }}>
+        <header
+          style={{
+            height: '70px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            padding: '0 20px',
+            borderBottom: '1px solid #333',
+            zIndex: 50,
+            backgroundColor: '#000'
+          }}
+        >
 
-          <div style={{ ...fontStyle, fontSize: '1.2rem', color: '#ffffff' }}>HOME.JSX</div>
+
+          <button
+            onClick={() => handleNavigation('contact')}
+            style={{
+              background: 'none',
+              border: '2px solid #00ff00',
+              cursor: 'pointer',
+              ...fontStyle,
+              color: '#ffffff',
+              fontSize: isMobile ? '1.2rem' : '1.2rem',
+              letterSpacing: isMobile ? '1.5px' : '3px',
+              textShadow: '0 0 10px rgba(0,255,0,0.4)'
+            }}
+          >
+            CONTACT.JSX
+          </button>
+
+          <div style={{ ...fontStyle, fontSize: '1.2rem', color: '#ffffff' }}>
+            HOME.JSX
+          </div>
+
         </header>
 
         {/* MAIN CONTENT */}
@@ -185,9 +216,11 @@ const Home = () => {
         {/* FOOTER */}
         <footer style={{ height: isMobile ? '80px' : '100px', position: 'relative', borderTop: '1px solid #ff0000', zIndex: 50, backgroundColor: '#000' }}>
           <div style={{ position: 'absolute', inset: 0, opacity: 0.3 }}><MatrixRain /></div>
+          {/* footer content
           <div style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <button onClick={() => handleNavigation('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', ...fontStyle, fontSize: isMobile ? '2rem' : '2.5rem', letterSpacing: isMobile ? '5px' : '10px' }}>KONTAKT</button>
           </div>
+           */}
         </footer>
       </motion.div>
 
