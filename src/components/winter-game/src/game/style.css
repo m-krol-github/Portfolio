@@ -128,3 +128,24 @@ position: relative !important;
 top: 0;
 left: 0;
 }
+
+/* 🔥 MOBILE PORTRAIT */
+@media (max-width: 768px) and (orientation: portrait) {
+  .interface {
+    top: 10px;
+    left: 10px;
+    gap: 8px;
+    font-size: 3rem;          
+  }
+
+  .interface .btn {
+    padding: 8px 14px;       
+    font-size: 3rem;
+  }
+
+  .interface .infoTxt,
+  .interface .time,
+  .interface .gripProgress {
+    font-size: 3rem;       
+  }
+}

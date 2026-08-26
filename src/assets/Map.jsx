@@ -18,8 +18,8 @@ import {
 } from "cesium";
 
 import locationsData from '../assets/data/locations.json';
-import pinImg from '../assets/thumbnails/pin.png';
-import menuIconRef from '../assets/thumbnails/arrow.png';
+import pinImg from '../assets/pin.png';
+import menuIconRef from '../assets/arrow.png';
 
 
 const MapScene = () => {
@@ -35,7 +35,6 @@ const MapScene = () => {
   const [isRotating, setIsRotating] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const isPortrait = window.innerHeight > window.innerWidth;
-  const menuIconRef = useRef(null);
 
 
   useEffect(() => {
@@ -103,14 +102,13 @@ const MapScene = () => {
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden', backgroundColor: 'black' }}>
 
-      {isPortrait && !menuOpen && (
+      {isPortrait && (
         <motion.div
-          ref={menuIconRef}
-          onClick={() => setMenuOpen(true)}
+          onClick={() => setMenuOpen(!menuOpen)}
           whileTap={{ scale: 0.9 }}
           style={{
             position: 'fixed',
-            top: '20px',
+            top: '100px',
             left: '20px',
             width: '55px',
             height: '55px',
@@ -126,15 +124,13 @@ const MapScene = () => {
             cursor: 'pointer'
           }}
         >
-          ≡
+          {menuOpen ? '×' : '≡'}
         </motion.div>
       )}
 
-
-
-      {/* --- SIDEBAR --- */}
-      {/* --- LEFT --- */}
-
+        {/* --- SIDEBAR --- */}
+        {/* --- LEFT --- */}
+      
       <motion.div
         initial={{ x: isPortrait ? -320 : 0, opacity: 1 }}
         animate={{ x: isPortrait ? (menuOpen ? 0 : -320) : 0 }}
@@ -176,26 +172,14 @@ const MapScene = () => {
           onMouseEnter={(e) => e.target.style.color = '#00ff00'}
           onMouseLeave={(e) => e.target.style.color = '#888'}
         >
-          [ ESC ] BACK TO HUB
+          [ ESC ] BACK TO HUB // POWRÓT
         </button>
 
         <div style={{ padding: '30px', borderBottom: '1px solid #00ff0033' }}>
-          <h2 style={{ color: '#00ff00', fontSize: '24px', margin: 0 }}>PLACES OF WORK</h2>
+          <h2 style={{ color: '#00ff00', fontSize: '24px', margin: 0 }}>NETWORK // NODES</h2>
           <div style={{ fontSize: '10px', color: '#00ff00', opacity: 0.5, marginTop: '5px' }}>
             {isRotating ? "SCANNING MODE: ACTIVE" : "STATIONARY: LOCKED"}
           </div>
-        </div>
-
-        <div
-          style={{
-            padding: '20px',
-            fontSize: '24px',
-            cursor: 'pointer',
-            color: '#ff0000'
-          }}
-          onClick={() => setMenuOpen(false)}
-        >
-          Close Menu
         </div>
 
         {/* REST OF SIDEBARD */}
@@ -213,13 +197,10 @@ const MapScene = () => {
                 backgroundColor: hoveredId === loc.id ? '#00ff0011' : 'transparent',
                 transition: '0.2s'
               }}
-
-
             >
               <div style={{ fontSize: '18px' }}>{(loc.name || "").toUpperCase()}</div>
               <div style={{ fontSize: '11px', color: '#00ff00', opacity: 0.8 }}>{loc.comment || ""}</div>
             </div>
-
           ))}
         </div>
 
@@ -306,12 +287,7 @@ const MapScene = () => {
                 key={loc.id}
                 id={loc.id}
                 position={Cartesian3.fromDegrees(loc.lng, loc.lat)}
-
-                onClick={() => {
-                  handleFlyTo(loc.lng, loc.lat);
-                  setMenuOpen(false);
-                }}
-
+                onClick={() => handleFlyTo(loc.lng, loc.lat)}
                 billboard={{
                   image: pinImg,
                   width: isHovered ? 45 : 30,
@@ -331,7 +307,6 @@ const MapScene = () => {
                   backgroundColor: isHovered ? Color.LIME.withAlpha(0.5) : Color.BLACK.withAlpha(0.7),
                   backgroundPadding: new Cartesian2(10, 8)
                 }}
-
               />
             );
           })}

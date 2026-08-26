@@ -4,34 +4,76 @@
     "name": "Lancut",
     "lat": 50.0678,
     "lng": 22.2244,
-    "comment": "..."
+    "comment": "NiceTry Hedquater"
   },
   {
     "id": "L02",
     "name": "Rzeszow",
     "lat": 50.0412,
     "lng": 21.9991,
-    "comment": "..."
+    "comment": "Connected Innovations"
   },
   {
     "id": "L03",
     "name": "Dire Dawa",
     "lat": 9.5933,
     "lng": 41.8661,
-    "comment": "..."
+    "comment": "Ethiopian Hub for GGS/DMT Goephisical Surveying"
   },
   {
     "id": "L04",
     "name": "Doha",
     "lat": 25.2854,
     "lng": 51.5310,
-    "comment": "..."
+    "comment": "GGS/DMT Geophysical Surveying Hub"
   },
   {
     "id": "L05",
     "name": "Dubai",
     "lat": 25.2048,
     "lng": 55.2708,
-    "comment": "..."
+    "comment": "GGS/DMT Geophysical Surveying Hub"
+  },
+  {
+    "id": "L06",
+    "name": "Dallas",
+    "lat": 32.7765,
+    "lng": -96.7970,
+    "comment": "GGS Geophysical Surveying Headquarters"
+  },
+  {
+    "id": "L07",
+    "name": "Vienna",
+    "lat": 48.2083,
+    "lng": 16.3725,
+    "comment": "XR Freelance Contracting"
+  },
+  {
+    "id": "L08",
+    "name": "Warsaw",
+    "lat": 52.2297,
+    "lng": 21.0122,
+    "comment": "XR Freelance Contracting"
+  },
+  {
+    "id": "L09",
+    "name": "Munich",
+    "lat": 48.1351,
+    "lng": 11.5820,
+    "comment": "XR Freelance Contracting"
+  },
+  {
+    "id": "L10",
+    "name": "London",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "comment": "Thryvee, Full-Stack Web Development, XR Freelance Contract"
+  },
+  {
+    "id": "L11",
+    "name": "Tokyo",
+    "lat": 35.6895,
+    "lng": 139.6917,
+    "comment": "Dentsu, Full-Stack Web Development,  Freelance Contracting"
   }
 ]
